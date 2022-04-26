@@ -63,7 +63,7 @@ function update()
             var distantax = ballz[j].pozx-ballz[i].pozx;
             var distantay = ballz[j].pozy-ballz[i].pozy;
             var distanta = Math.sqrt(distantax * distantax + distantay * distantay);
-            if(distanta<rad(ballz[i])/1.5+rad(ballz[j])/1.5)
+            if(distanta<rad(ballz[i])/2+rad(ballz[j])/2)
             {
                 merge(ballz[i],ballz[j]);
                 ballz.splice(j, 1);
@@ -78,8 +78,8 @@ function merge(ball1,ball2)
     ball1.velx = (ball1.mass * ball1.velx + ball2.mass * ball2.velx) / (ball1.mass + ball2.mass);
     ball1.vely = (ball1.mass * ball1.vely + ball2.mass * ball2.vely) / (ball1.mass + ball2.mass);
     ball1.mass += ball2.mass;
-    ball1.getball.style.width = ball1.mass/10 + 'px';
-    ball1.getball.style.height = ball1.mass/10 + 'px';
+    ball1.getball.style.width = rad(ball1) + 'px';
+    ball1.getball.style.height = rad(ball1) + 'px';
 }
 
 function gravity(ball1,ball2)
